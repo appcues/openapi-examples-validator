@@ -77,28 +77,12 @@ describe('Main API', function() {
             });
         });
         describe('collect statistics', () => {
-            it('with examples with missing schemas', () => {
-                validateFile(getPathOfTestData('simple-example')).statistics.should.deep
-                    .equal({
-                        responseSchemasWithExamples: 1,
-                        responseExamplesWithoutSchema: 3,
-                        responseExamplesTotal: 4
-                    });
-            });
             it('without examples', () => {
                 validateFile(getPathOfTestData('valid-without-examples')).statistics.should.deep
                     .equal({
-                        responseSchemasWithExamples: 1,
-                        responseExamplesWithoutSchema: 0,
-                        responseExamplesTotal: 1
-                    });
-            });
-            it('without schema', () => {
-                validateFile(getPathOfTestData('valid-without-schema')).statistics.should.deep
-                    .equal({
-                        responseSchemasWithExamples: 1,
-                        responseExamplesWithoutSchema: 1,
-                        responseExamplesTotal: 2
+                        schemasWithExamples: 1,
+                        examplesWithoutSchema: 0,
+                        examplesTotal: 1
                     });
             });
         });

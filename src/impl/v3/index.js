@@ -1,11 +1,13 @@
 // CONSTANTS
 
-const PATH__EXAMPLES = '$..responses..content.application/json.examples..value';
+const PATH__EXAMPLES = '$..[responses,requestBody]..content.application/json.examples..[value,$ref]';
+const PATH__SCHEMAS = '$..[responses,requestBody]..content.application/json.schema';
 
 // PUBLIC API
 
 module.exports = {
-    getJsonPathToExamples
+    getJsonPathToExamples,
+    getJsonPathToSchemas
 };
 
 // IMPLEMENTATION DETAILS
@@ -14,4 +16,10 @@ module.exports = {
  * Get the JSONPath to the examples
  * @returns {string}    JSONPath
  */
-function getJsonPathToExamples() { return PATH__EXAMPLES; }
+function getJsonPathToExamples() {
+    return PATH__EXAMPLES;
+}
+
+function getJsonPathToSchemas() {
+    return PATH__SCHEMAS;
+}

@@ -1,9 +1,11 @@
 // CONSTANTS
 
 const PATH__EXAMPLES = '$..examples.application/json';
+const PATH__SCHEMAS = '$..schema';
 
 module.exports = {
-    getJsonPathToExamples
+    getJsonPathToExamples,
+    getJsonPathToSchemas
 };
 
 // IMPLEMENTATION DETAILS
@@ -13,3 +15,9 @@ module.exports = {
  * @returns {string}    JSONPath
  */
 function getJsonPathToExamples() { return PATH__EXAMPLES; }
+
+/**
+ * Get the JSONPath to the schemas
+ * @returns {string}    JSONPath
+ */
+function getJsonPathToSchemas() { return PATH__SCHEMAS; }

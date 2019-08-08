@@ -38,14 +38,6 @@ describe('Main-module, for v2 should', () => {
             validateExamples(loadTestData('valid-array-response')).valid.should.equal(true);
         });
     });
-    describe('ignore', () => {
-        it('responses without schema', () => {
-            validateExamples(loadTestData('valid-without-schema')).valid.should.equal(true);
-        });
-        it('responses without examples', () => {
-            validateExamples(loadTestData('valid-without-examples')).valid.should.equal(true);
-        });
-    });
     describe('find error:', () => {
         it('invalid type', () => {
             const result = validateExamples(loadTestData('invalid-type'));
@@ -234,14 +226,14 @@ describe('Main-module, for v2 should', () => {
                 ]);
             });
         });
-        describe("when the response-schema can't be found", () => {
+        describe("when the schema can't be found", () => {
             it('while validating a single external example', () => {
                 const result = validateExample(FILE_PATH__EXTERNAL_EXAMPLES_SCHEMA,
                     PATH__SCHEMA_EXTERNAL_EXAMPLE_INVALID, FILE_PATH__EXTERNAL_EXAMPLE1_VALID);
                 result.valid.should.equal(false);
                 result.errors.should.deep.equal([
                     new ApplicationError(ERR_TYPE__JSON_PATH_NOT_FOUND, {
-                        message: "Path to response-schema can't be found: "
+                        message: "Path to schema can't be found: "
                             + `'${ PATH__SCHEMA_EXTERNAL_EXAMPLE_INVALID }'`,
                         params: {
                             path: PATH__SCHEMA_EXTERNAL_EXAMPLE_INVALID
@@ -257,7 +249,7 @@ describe('Main-module, for v2 should', () => {
                 result.errors.should.deep.equal([
                     new ApplicationError(ERR_TYPE__JSON_PATH_NOT_FOUND, {
                         mapFilePath: FILE_PATH__EXTERNAL_EXAMPLES_MAP_WITH_WRONG_SCHEMA_PATH,
-                        message: "Path to response-schema can't be found: "
+                        message: "Path to schema can't be found: "
                             + `'${ PATH__SCHEMA_EXTERNAL_EXAMPLE_INVALID }'`,
                         params: {
                             path: PATH__SCHEMA_EXTERNAL_EXAMPLE_INVALID
@@ -311,9 +303,9 @@ describe('Main-module, for v2 should', () => {
         it('should collect the statistics over all mapping-files', () => {
             validateExamplesByMap(FILE_PATH__EXTERNAL_EXAMPLES_SCHEMA, FILE_PATH__EXTERNAL_EXAMPLES_GLOB)
                 .statistics.should.deep.equal({
-                    responseSchemasWithExamples: 4,
-                    responseExamplesWithoutSchema: 0,
-                    responseExamplesTotal: 7,
+                    schemasWithExamples: 4,
+                    examplesWithoutSchema: 0,
+                    examplesTotal: 7,
                     matchingFilePathsMapping: 2
                 });
         });
@@ -324,9 +316,9 @@ describe('Main-module, for v2 should', () => {
                 FILE_PATH__EXTERNAL_EXAMPLES_MAP__RELATIVE, { cwdToMappingFile: true });
             result.valid.should.equal(true);
             result.statistics.should.deep.equal({
-                responseSchemasWithExamples: 2,
-                responseExamplesWithoutSchema: 0,
-                responseExamplesTotal: 3,
+                schemasWithExamples: 2,
+                examplesWithoutSchema: 0,
+                examplesTotal: 3,
                 matchingFilePathsMapping: 1
             });
         });

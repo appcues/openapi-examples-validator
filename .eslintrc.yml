@@ -31,7 +31,7 @@ rules:
     - last
   complexity:
     - 2
-    - 7
+    - 8
   curly:
     - 2
     - all

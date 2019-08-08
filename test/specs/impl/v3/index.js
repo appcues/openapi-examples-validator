@@ -9,7 +9,7 @@ describe('Main-module, for v3 should', () => {
         it('valid single example', () => {
             validateExamples(loadTestData(REL_PATH__SIMPLE)).valid.should.equal(true);
         });
-        it('example with internal refs', () => {
+        it('valid example with internal refs', () => {
             validateExamples(loadTestData(REL_PATH__WITH_INTERNAL_REFS)).valid.should.equal(true);
         });
     });

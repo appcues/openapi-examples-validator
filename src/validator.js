@@ -5,7 +5,7 @@ const { JSONPath } = require('jsonpath-plus'),
 const PROP__ID = '$id',
     JSON_PATH__REFS = '$..\$ref',
     ID__SPEC_SCHEMA = 'https://www.npmjs.com/package/openapi-examples-validator/defs.json',
-    ID__REPSONSE_SCHEMA = 'https://www.npmjs.com/package/openapi-examples-validator/schema.json';
+    ID__SCHEMA = 'https://www.npmjs.com/package/openapi-examples-validator/schema.json';
 
 module.exports = {
     getValidatorFactory,
@@ -30,13 +30,13 @@ function getValidatorFactory(specSchema, options) {
 /**
  * Compiles the validator-function.
  * @param {ajv | ajv.Ajv}   validator       Validator-instance
- * @param {Object}          responseSchema  The response-schema, against the examples will be validated
+ * @param {Object}          schema          The request/response schema, against which the examples will be validated
  * @returns {ajv.ValidateFunction}
  */
-function compileValidate(validator, responseSchema) {
-    const preparedResponseSchema = _prepareResponseSchema(responseSchema, ID__REPSONSE_SCHEMA);
-    _replaceRefsToPreparedSpecSchema(preparedResponseSchema);
-    return validator.compile(preparedResponseSchema);
+function compileValidate(validator, schema) {
+    const preparedSchema = _prepareSchema(schema, ID__SCHEMA);
+    _replaceRefsToPreparedSpecSchema(preparedSchema);
+    return validator.compile(preparedSchema);
 }
 
 /**
@@ -46,7 +46,7 @@ function compileValidate(validator, responseSchema) {
  * @returns {Object}
  * @private
  */
-function _prepareResponseSchema(specSchema, idSchema) {
+function _prepareSchema(specSchema, idSchema) {
     const preparedSchema = Object.assign({}, specSchema);
     preparedSchema[PROP__ID] = idSchema;
     return preparedSchema;

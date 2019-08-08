@@ -7,11 +7,10 @@ const
 const CMD__RUN = 'node dist/cli.js';
 
 describe('CLI-module, with', () => {
-    describe('valid examples', () => {
-        it('should write to stdout, but not into stderr', (done) => {
-            exec(`${ CMD__RUN } ${ getPathOfTestData('simple-example') }`, (err, stdout, stderr) => {
+    describe('valid examples, but with missing schema', () => {
+        it('should write to stout', (done) => {
+            exec(`${ CMD__RUN } ${ getPathOfTestData('simple-example') }`, (err, stdout) => {
                 stdout.should.not.equal('');
-                stderr.should.equal('');
                 done();
             });
         });

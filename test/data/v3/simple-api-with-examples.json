@@ -28,6 +28,11 @@
             "required": false,
             "schema": {
               "type": "number"
+            },
+            "examples": {
+              "one": {
+                "value": 1
+              }
             }
           }
         ],
@@ -39,6 +44,11 @@
                 "description": "A link to the next page of responses",
                 "schema": {
                   "type": "string"
+                },
+                "examples": {
+                  "pet_name": {
+                    "value": "Next Pet"
+                  }
                 }
               }
             },
@@ -95,6 +105,14 @@
                       "type": "string"
                     }
                   }
+                },
+                "examples": {
+                  "error": {
+                    "value": {
+                      "code": 404,
+                      "message": "Not Found."
+                    }
+                  }
                 }
               }
             }
@@ -128,6 +146,14 @@
                       "type": "string"
                     }
                   }
+                },
+                "examples": {
+                  "error": {
+                    "value": {
+                      "code": 404,
+                      "message": "Not Found."
+                    }
+                  }
                 }
               }
             }
@@ -150,6 +176,11 @@
             "description": "The id of the pet to retrieve",
             "schema": {
               "type": "string"
+            },
+            "examples": {
+              "pet_id": {
+                "value": "1234"
+              }
             }
           }
         ],
@@ -177,6 +208,22 @@
                       }
                     }
                   }
+                },
+                "examples": {
+                  "pets": {
+                    "value": [
+                      {
+                        "id": 1234,
+                        "name": "Pet Name",
+                        "tag": "Pet Tag"
+                      },
+                      {
+                        "id": 4321,
+                        "name": "Pet Name",
+                        "tag": "Pet Tag"
+                      }
+                    ]
+                  }
                 }
               }
             }
@@ -196,6 +243,14 @@
                     },
                     "message": {
                       "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "error": {
+                    "value": {
+                      "code": 404,
+                      "message": "Not Found."
                     }
                   }
                 }
