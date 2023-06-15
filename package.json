@@ -58,7 +58,7 @@
     "standard-version": "^4.4.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^5.0.0"
   },
   "dependencies": {
     "ajv": "6.9.1",
